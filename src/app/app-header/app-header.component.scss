@@ -1,28 +1,31 @@
 .header {
-    height: 60px;
-    background-color: #00A78D;
+    height: 0;
 }
-#global-navi {
-    background:#333;
-    position: fixed;
-    top: 0;
-    right: 0px;
-    width: 100%;
+#wrapper nav {
+    float: left;
+    width: 300px;
+    padding-top: 50px;
+    background:#00A78D;
+    font-size: 16px;
+    height: 100vmax;
 }
-#wrapper nav ul li{
-display:inline-block;
-font-size: 16px;
-padding:  30px 20px 25px 28px;
+#wrapper nav ul li {
+    display:block;
+    padding: 20px 28px
 }
-#wrapper nav ul li a{
-color: #ddd
+
+#wrapper nav ul li a {
+    text-decoration: none;
+    color: white
 }
-.menu {
-    margin: 0;
-    width: 100%;
-}
+
+
 /*スマホ画面で例１のハンバーガーメニューの形にする*/
 @media screen and (max-width: 600px) {
+.header {
+    background-color: #00A78D;
+    height: 60px;
+}
 #wrapper nav {
     position: fixed;
     top: 0;
@@ -42,7 +45,7 @@ color: #ddd
  
 #wrapper nav ul li a {
     text-decoration: none;
-    color: #ddd
+    color: white
 }
  
 #wrapper .btn-gnavi {

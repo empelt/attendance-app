@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AttendListComponent } from './attend-list.component';
+import { CsvOutputComponent } from './csv-output.component';
 
-describe('AttendListComponent', () => {
-  let component: AttendListComponent;
-  let fixture: ComponentFixture<AttendListComponent>;
+describe('CsvOutputComponent', () => {
+  let component: CsvOutputComponent;
+  let fixture: ComponentFixture<CsvOutputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttendListComponent ]
+      declarations: [ CsvOutputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttendListComponent);
+    fixture = TestBed.createComponent(CsvOutputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
