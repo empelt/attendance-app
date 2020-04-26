@@ -1,0 +1,18 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>番号</th>
+                <th>名前</th>
+                <th>欠席　遅刻　早退　出席</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of viewlist">
+                <td>{{ student.no }}</td>
+                <td>{{ student.name }}</td>
+                <td>欠{{ student.absent }} 遅{{ student.late }} 早{{ student.early }} 出席{{student.attend}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -5,7 +5,11 @@
             <option *ngFor="let grade of gradeList" [value]="grade">{{grade}} 年</option>
         </select>
     </div>
-    <div class="classbutton" *ngFor="let class of viewclassList">
-        <button type="button" class="btn">{{class.classname}}</button>
+    <div class="main">
+        <ul class="list">
+            <li *ngFor="let class of viewclassList">
+                <a [routerLink]="['attend']" [queryParams]="{ classnum: class.classnum }">{{class.classname}}</a>
+            </li>
+        </ul>
     </div>
 </div>

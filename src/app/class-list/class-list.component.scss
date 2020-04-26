@@ -7,16 +7,31 @@ select {
     height: 30px;
 }
 
-
-button {
-    background-color: white;
+.list {
+    list-style-type: none;
+    margin-top: 30px;
+    padding: 0;
+}
+.list li {
     width: 100%;
+    background-color: white;
+    border-radius: 4px;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
 }
-
-button:hover {
-    background-color: rgb(216, 216, 216);
+.list li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+.list a {
+    color: black;
+    text-decoration: none;
+    
+    // リンクのクリック範囲を親要素合わせる
+    display: block;
 }
