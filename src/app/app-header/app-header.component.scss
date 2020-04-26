@@ -25,6 +25,10 @@
 .header {
     background-color: #00A78D;
     height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 #wrapper nav {
     position: fixed;
@@ -112,4 +116,14 @@
 #wrapper .contents section:nth-child(even) p {
     right: 10%
 }
+.wrappermargin {
+    height: 70px;
+}
+
+}
+
+@media screen and (min-width: 601px) {
+    .btn-gnavi {
+        display: none;
+    }
 }
