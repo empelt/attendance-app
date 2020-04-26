@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="gradeselect">
+        <select (change)="onOptionsSelected($event.target.value)">
+            <option [value]="0" >全学年</option>
+            <option *ngFor="let grade of gradeList" [value]="grade">{{grade}} 年</option>
+        </select>
+    </div>
+    <div class="classbutton" *ngFor="let class of viewclassList">
+        <button type="button" class="btn">{{class.classname}}</button>
+    </div>
+</div>
