@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "attendance-app"
+    }
+  },
+  "defaultProject": "attendance-app",
+  "cli": {
+    "analytics": false
+  }
 }
