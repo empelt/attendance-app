@@ -20,18 +20,29 @@ select {
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    text-align: center;
-    cursor: pointer;
 }
-.list li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-}
+
 .list a {
     color: black;
     text-decoration: none;
     
     // リンクのクリック範囲を親要素合わせる
+
+}
+
+.btn {
+    cursor: pointer;
     display: block;
+    width: 25%;
+}
+.btn:hover {
+    color: #607D8B;
+}
+
+.classitem {
+    text-align: center;
+    display: inline-block;
+}
+.classname {
+    width: 50%;
 }

@@ -197,6 +197,4 @@ export class AttendListComponent implements OnInit {
       this.attendlist.find((v) => v.classnum == this.classnum).data.find((v) => v.no == no).selectIndex = index;
     }
   }
-
-
 }
