@@ -9,6 +9,7 @@ import { ManagementComponent } from './management/management.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { CsvOutputComponent } from './csv-output/csv-output.component';
 import { AttendListComponent } from './attend-list/attend-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AttendListComponent } from './attend-list/attend-list.component';
     ManagementComponent,
     AppHeaderComponent,
     CsvOutputComponent,
-    AttendListComponent
+    AttendListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { AttendListComponent } from './attend-list/attend-list.component';
       { path: 'manage', component: ManagementComponent },
       { path: 'csv', component: CsvOutputComponent },
       { path: 'attend', component: AttendListComponent },
+      { path: 'login', component: LoginComponent },
     ])
   ],
   providers: [],
