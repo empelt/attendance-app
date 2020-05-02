@@ -1,5 +1,6 @@
 <div class="container">
     <table class="table">
+        <!--
         <thead>
             <tr>
                 <th>番号</th>
@@ -12,10 +13,12 @@
                 </th>
             </tr>
         </thead>
+        -->
         <tbody>
+            <tr>{{ student.no }}</tr>
+            <tr>{{ student.name }}</tr>
             <tr *ngFor="let student of viewlist">
-                <td>{{ student.no }}</td>
-                <td>{{ student.name }}</td>
+
                 <td>
                     <!-- <div class="btn-toolbar" role="toolbar"> -->
                          <div class="btn-group-new btn-red" role="group">
