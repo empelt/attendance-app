@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TestComponent } from './layout/test/test.component';
+import { DefaultComponent } from './layout/default/default.component';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ManagementComponent } from './management/management.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
@@ -14,7 +16,9 @@ import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
+    DefaultComponent,
     ClassListComponent,
+    TestComponent,
     ManagementComponent,
     AppHeaderComponent,
     CsvOutputComponent,
@@ -25,14 +29,31 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: ClassListComponent },
-      { path: 'manage', component: ManagementComponent },
-      { path: 'csv', component: CsvOutputComponent },
-      { path: 'attend', component: AttendListComponent },
-      { path: 'login', component: LoginComponent },
+      {
+        path: "",
+        component: DefaultComponent,
+        children: [
+          { path: '', component: ClassListComponent },
+          { path: 'manage', component: ManagementComponent },
+          { path: 'csv', component: CsvOutputComponent },
+          { path: 'attend', component: AttendListComponent },
+        ]
+      },
+      {
+        path: "login",
+        component: TestComponent,
+        children: [
+          {
+            path: '',
+            component: LoginComponent
+          }
+        ]
+      },
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
