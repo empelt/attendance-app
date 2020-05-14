@@ -6,14 +6,14 @@
                 <th>名前</th>
                 <th class="lastselect">
                     <select (change)="onOptionsSelected($event.target.value)">
-                        <option>2020年5月</option>
+                        <option *ngFor="let month of monthdata">{{month}}</option>
                     </select>
                     <p>出席情報</p>
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let student of attendlist">
+            <tr *ngFor="let student of viewlist">
                 <td>{{ student.no }}</td>
                 <td>{{ student.name }}</td>
                 <td>欠{{ student.absent }} 遅{{ student.late }} 早{{ student.early }} 出席{{student.attend}}</td>

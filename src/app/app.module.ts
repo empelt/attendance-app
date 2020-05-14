@@ -13,6 +13,7 @@ import { CsvOutputComponent } from './csv-output/csv-output.component';
 import { AttendListComponent } from './attend-list/attend-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ManagementComponent,
     AppHeaderComponent,
     CsvOutputComponent,
-    AttendListComponent
+    AttendListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +43,12 @@ import { HttpClientModule } from '@angular/common/http';
         ]
       },
       {
-        path: "test",
+        path: "login",
         component: TestComponent,
         children: [
           {
-            path: "a",
-            component: ClassListComponent
+            path: '',
+            component: LoginComponent
           }
         ]
       },

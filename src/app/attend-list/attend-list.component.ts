@@ -269,4 +269,7 @@ export class AttendListComponent implements OnInit {
         .data.find((v) => v.no == no).selectIndex = index;
     }
   }
+  checkInput(val:string): void {
+    console.log(val);
+  }
 }
