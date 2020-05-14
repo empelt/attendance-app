@@ -11,6 +11,8 @@ import { ManagementComponent } from './management/management.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { CsvOutputComponent } from './csv-output/csv-output.component';
 import { AttendListComponent } from './attend-list/attend-list.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { AttendListComponent } from './attend-list/attend-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: "",
