@@ -8,12 +8,12 @@
     <div class="main">
         <ul class="list">
             <li *ngFor="let class of viewclassList">
-                <div class="classitem classname">{{class.classname}}</div>
+                <div class="classitem classname">{{class.name}}</div>
                 <div class="classitem btn">
-                    <button><a [routerLink]="['attend']" [queryParams]="{ classnum: class.classnum }">出欠</a></button>
+                    <button><a [routerLink]="['attend']" [queryParams]="{ classnum: class.class_id }">出欠</a></button>
                 </div>
                 <div class="classitem btn">
-                    <button><a [routerLink]="['manage']" [queryParams]="{ classnum: class.classnum }">管理画面</a></button>
+                    <button><a [routerLink]="['manage']" [queryParams]="{ classnum: class.class_id }">管理画面</a></button>
                 </div>
             </li>
         </ul>
