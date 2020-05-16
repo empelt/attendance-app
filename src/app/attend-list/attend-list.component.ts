@@ -32,19 +32,19 @@ export class AttendListComponent implements OnInit {
   }
 
   onClick(index: number, no: number) {
-    if (
-      this.attendlist
-        .find((v) => v.classnum == this.classnum)
-        .data.find((v) => v.no == no).selectIndex == index
-    ) {
-      this.attendlist
-        .find((v) => v.classnum == this.classnum)
-        .data.find((v) => v.no == no).selectIndex = 0;
-    } else {
-      this.attendlist
-        .find((v) => v.classnum == this.classnum)
-        .data.find((v) => v.no == no).selectIndex = index;
-    }
+    // if (
+    //   this.attendlist
+    //     .find((v) => v.classnum == this.classnum)
+    //     .data.find((v) => v.no == no).selectIndex == index
+    // ) {
+    //   this.attendlist
+    //     .find((v) => v.classnum == this.classnum)
+    //     .data.find((v) => v.no == no).selectIndex = 0;
+    // } else {
+    //   this.attendlist
+    //     .find((v) => v.classnum == this.classnum)
+    //     .data.find((v) => v.no == no).selectIndex = index;
+    // }
   }
   checkInput(val:string): void {
     console.log(val);

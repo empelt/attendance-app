@@ -8,8 +8,15 @@ td {
     vertical-align: middle;
 
 }
-th {
+tr {
+    position: relative;
     text-align: center;
+    background-color: white;
+    border: 1px #E4E4E4 solid;
+    padding-top: 120px !important;
+    padding-bottom: 120px !important;
+    height: 50px;
+    vertical-align: middle;
 }
 select {
     height: 25px;
@@ -64,4 +71,13 @@ select {
 }
 .stu_num {
     background-color: rgb(153, 153, 153);
+}
+
+.form-group {
+    margin: 0 auto;
+    width: 80%;
+}
+.in {
+    display: table-cell;
+    vertical-align: middle;
 }
