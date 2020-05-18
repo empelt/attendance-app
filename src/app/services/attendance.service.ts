@@ -50,11 +50,12 @@ export class AttendanceService {
             });
     }
 
-    public updateremark(remark: string): Promise<string> {
+    public updateremark(no: Number, remark: string): Promise<string> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
+            id: no,
             remark: remark
         };
 

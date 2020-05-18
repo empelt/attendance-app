@@ -11,8 +11,7 @@ import { AttendanceService } from '../services/attendance.service';
   styleUrls: ['./attend-list.component.scss'],
 })
 export class AttendListComponent implements OnInit {
-  viewlist = {};
-  valuelist = [];
+  viewlist = [];
   classnum: Number;
 
   constructor(
@@ -25,7 +24,7 @@ export class AttendListComponent implements OnInit {
     this.classnum = Number(this.route.snapshot.queryParamMap.get('classnum'));
     this.studentservice
       .getstudents(this.classnum)
-      .then((result: string) => {
+      .then((result: any) => {
         console.log(result);
         this.viewlist = result;
       })
@@ -36,34 +35,29 @@ export class AttendListComponent implements OnInit {
 
   //index: type  no: student_id
   onClick(index: number, no: number) {
+    //locallistのtypeを更新
+    //this.viewlist.find((v)=>v.id==no).type = index;
+
     this.attendanceservice
-    .updatetype(index, no)
-    .catch((err: any) => {
-      console.log(err);
-    });
-    // if (
-    //   this.attendlist
-    //     .find((v) => v.classnum == this.classnum)
-    //     .data.find((v) => v.no == no).selectIndex == index
-    // ) {
-    //   this.attendlist
-    //     .find((v) => v.classnum == this.classnum)
-    //     .data.find((v) => v.no == no).selectIndex = 0;
-    // } else {
-    //   this.attendlist
-    //     .find((v) => v.classnum == this.classnum)
-    //     .data.find((v) => v.no == no).selectIndex = index;
-    // }
-  }
-  checkInput(val: string): void {
-    console.log(val);
+      .updatetype(index, no)
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 
-  //備考の中身を受け取って
+  //　特定のstudent.idをもったオブジェクトのremarkをDBに投げる
+  onSaveClick(no: Number) {
+    //   let remark = this.viewlist.find((v)=>v.id == no).remark; 
+    //   this.attendanceservice
+    //   .updateremark(no, remark)
+    //   .catch((err: any) => {
+    //     console.log(err);
+    //   });
+  }
+
+  //inputの中身を受け取ってローカルに保存
   onKey(event: any, no: Number) {
-    //this.viewlist.find((v)=>v.id == no)
-
-    console.log(event.target.value)
-    console.log(no)
+    // this.viewlist.find((v)=>v.id == no).remark = event.target.value;
   }
+
 }

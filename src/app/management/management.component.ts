@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { StudentService } from '../services/student.service'
+  import { from } from 'rxjs';
 
 @Component({
   selector: 'app-management',
@@ -8,178 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ManagementComponent implements OnInit {
 
-  attendlist = [
-    {classnum: 11, data: [
-      {no: 1, name: "山田花子", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田花子", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田花子", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田花子", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 12, data: [
-      {no: 1, name: "山田太郎", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田太郎", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田太郎", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田太郎", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 13, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 14, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 15, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 16, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 17, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 18, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 21, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 22, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 23, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 24, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 25, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 26, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 27, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 28, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 31, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 32, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 33, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 34, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 35, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 36, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 37, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-    {classnum: 38, data: [
-      {no: 1, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 2, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 3, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-      {no: 4, name: "山田", absent: 0, late: 3, early: 0, attend: 15},
-    ]
-    },
-  ]
-
-  viewlist = {};
+  viewlist = [];
   classnum: Number;
 
   monthdata = [
@@ -195,11 +26,22 @@ export class ManagementComponent implements OnInit {
     "2020年10月",
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private studentservice: StudentService
+    ) { }
 
   ngOnInit(): void {
     this.classnum = Number(this.route.snapshot.queryParamMap.get('classnum'));
-    this.viewlist = this.attendlist.find((v) => v.classnum == this.classnum).data;
+    this.studentservice
+      .getstudents2(this.classnum)
+      .then((result: any) => {
+        console.log(result);
+        this.viewlist = result;
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
   onOptionsSelected(event: any) {
     

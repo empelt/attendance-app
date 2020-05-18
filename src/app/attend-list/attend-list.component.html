@@ -37,10 +37,12 @@
         </tr>
         <tr>
             <div class="in">
-                <div class="form-group input-group" >
-                    <input type="text" placeholder="備考" class="form-control" value="{{student.remark}}" (keyup)="onKey($event,student.id)">
+                <div class="form-group input-group">
+                    <input type="text" placeholder="備考" class="form-control" value="{{student.remark}}"
+                        (keyup)="onKey($event,student.id)">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">保存</button>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                            (click)="onSaveClick(student.id)">保存</button>
                     </div>
                 </div>
             </div>
