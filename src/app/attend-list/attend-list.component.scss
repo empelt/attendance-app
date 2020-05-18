@@ -28,7 +28,7 @@ select {
 .btn-group {
     width: 25%;
 }
-.btn {
+.btn-group-new .btn {
     margin: 10px;
     color: rgb(206, 202, 202);
     background-color: white;
@@ -80,4 +80,7 @@ select {
 .in {
     display: table-cell;
     vertical-align: middle;
+}
+.in .btn {
+    border-color: rgb(206, 202, 202);
 }

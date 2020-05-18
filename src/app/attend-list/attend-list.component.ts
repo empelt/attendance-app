@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../services/student.service';
+import { AttendanceService } from '../services/attendance.service';
 
 
 @Component({
@@ -11,16 +12,18 @@ import { StudentService } from '../services/student.service';
 })
 export class AttendListComponent implements OnInit {
   viewlist = {};
+  valuelist = [];
   classnum: Number;
 
   constructor(
     private route: ActivatedRoute,
-    private studentservice: StudentService
-  ) {}
+    private studentservice: StudentService,
+    private attendanceservice: AttendanceService
+  ) { }
 
   ngOnInit(): void {
     this.classnum = Number(this.route.snapshot.queryParamMap.get('classnum'));
-      this.studentservice
+    this.studentservice
       .getstudents(this.classnum)
       .then((result: string) => {
         console.log(result);
@@ -31,7 +34,13 @@ export class AttendListComponent implements OnInit {
       });
   }
 
+  //index: type  no: student_id
   onClick(index: number, no: number) {
+    this.attendanceservice
+    .updatetype(index, no)
+    .catch((err: any) => {
+      console.log(err);
+    });
     // if (
     //   this.attendlist
     //     .find((v) => v.classnum == this.classnum)
@@ -46,7 +55,15 @@ export class AttendListComponent implements OnInit {
     //     .data.find((v) => v.no == no).selectIndex = index;
     // }
   }
-  checkInput(val:string): void {
+  checkInput(val: string): void {
     console.log(val);
+  }
+
+  //備考の中身を受け取って
+  onKey(event: any, no: Number) {
+    //this.viewlist.find((v)=>v.id == no)
+
+    console.log(event.target.value)
+    console.log(no)
   }
 }
