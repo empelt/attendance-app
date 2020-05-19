@@ -34,7 +34,7 @@ export class ManagementComponent implements OnInit {
   ngOnInit(): void {
     this.classnum = Number(this.route.snapshot.queryParamMap.get('classnum'));
     this.studentservice
-      .getstudents2(this.classnum)
+      .getstudents(this.classnum)
       .then((result: any) => {
         console.log(result);
         this.viewlist = result;

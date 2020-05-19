@@ -18,8 +18,21 @@ export class AttendListComponent implements OnInit {
     private route: ActivatedRoute,
     private studentservice: StudentService,
     private attendanceservice: AttendanceService
-  ) { }
+  ) {}
 
+  monthdata = [
+    "2020年1月",
+    "2020年2月",
+    "2020年3月",
+    "2020年4月",
+    "2020年5月",
+    "2020年6月",
+    "2020年7月",
+    "2020年8月",
+    "2020年9月",
+    "2020年10月",
+  ];
+  
   ngOnInit(): void {
     this.classnum = Number(this.route.snapshot.queryParamMap.get('classnum'));
     this.studentservice
@@ -48,17 +61,21 @@ export class AttendListComponent implements OnInit {
 
   //　特定のstudent.idをもったオブジェクトのremarkをDBに投げる
   onSaveClick(no: Number) {
-    //   let remark = this.viewlist.find((v)=>v.id == no).remark; 
-    //   this.attendanceservice
-    //   .updateremark(no, remark)
-    //   .catch((err: any) => {
-    //     console.log(err);
-    //   });
+      const remark = this.viewlist.find((v)=>v.id == no).attendances.remark; 
+      this.attendanceservice
+      .updateremark(no, remark)
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 
   //inputの中身を受け取ってローカルに保存
   onKey(event: any, no: Number) {
-    // this.viewlist.find((v)=>v.id == no).remark = event.target.value;
+    this.viewlist.find((v)=>v.id == no).attendances.remark = event.target.value;
+  }
+
+  onOptionsSelected(event) {
+
   }
 
 }
