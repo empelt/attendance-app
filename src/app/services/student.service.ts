@@ -16,11 +16,10 @@ export class StudentService {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
-            class_id: id
         };
 
         return this.http
-            .post('http://localhost:3000/student/findbyclassid', httpOptions)
+            .get('http://localhost:3000/student/findbyclassid/'+id, httpOptions)
             .toPromise()
             .then((result: any) => {
                 // console.log(result);

@@ -27,6 +27,7 @@ export class AttendListComponent implements OnInit {
       .then((result: any) => {
         console.log(result);
         this.viewlist = result;
+        console.log(this.viewlist.find((v)=>v.id==1).attendances)
       })
       .catch((err: any) => {
         console.log(err);
@@ -36,7 +37,7 @@ export class AttendListComponent implements OnInit {
   //index: type  no: student_id
   onClick(index: number, no: number) {
     //locallistのtypeを更新
-    //this.viewlist.find((v)=>v.id==no).type = index;
+    this.viewlist.find((v)=>v.id==no).attendances.type = index;
 
     this.attendanceservice
       .updatetype(index, no)
