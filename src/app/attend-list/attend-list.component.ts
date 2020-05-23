@@ -50,7 +50,7 @@ export class AttendListComponent implements OnInit {
   //index: type  no: student_id
   onClick(index: number, no: number) {
     //locallistのtypeを更新
-    this.viewlist.find((v)=>v.id==no).attendances.type = index;
+    this.viewlist.find((v)=>v.id==no).attendances[0].type = index;
 
     this.attendanceservice
       .updatetype(index, no)

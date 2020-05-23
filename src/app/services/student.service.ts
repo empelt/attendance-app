@@ -29,4 +29,22 @@ export class StudentService {
                 return Promise.reject(err.statusText);
             });
     }
+    public getstudents2(id: Number): Promise<string> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }),
+        };
+
+        return this.http
+            .get('http://localhost:3000/student/countattendance/'+id, httpOptions)
+            .toPromise()
+            .then((result: any) => {
+                // console.log(result);
+                return result;
+            })
+            .catch((err: any) => {
+                return Promise.reject(err.statusText);
+            });
+    }
 }
