@@ -3,10 +3,16 @@
         <select (change)="onOptionsSelected($event.target.value)">
             <option *ngFor="let month of monthdata">{{month}}</option>
         </select>
+        <select (change)="onOptionsSelected($event.target.value)">
+            <option *ngFor="let date of datedata">{{date}}</option>
+        </select>
+        <select (change)="onOptionsSelected($event.target.value)">
+            <option *ngFor="let period of perioddata">{{period}}</option>
+        </select>
     </div>
     <table class="table" *ngFor="let student of viewlist">
         <tr class="stu_num">
-            <div class="in">{{ student.id }}</div>
+            <div class="in">{{ student.studentNumber }}</div>
         </tr>
         <tr>
             <div class="in">{{ student.first_name }} {{ student.last_name }}</div>

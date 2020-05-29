@@ -36,44 +36,7 @@ export class ManagementComponent implements OnInit {
     this.studentservice
       .getstudents2(this.classnum)
       .then((result: any) => {
-        const val = result;
-        console.log(val);
-        const id = 0;
-        for (let item in val) {
-          // console.log(val[item].studentId)
-          if(val[item].class_id!=this.classnum) {
-            continue;
-          }
-          if (this.viewlist.findIndex((v) => v.studentId == val[item].studentId) >= 0) {
-            switch (val[item].type) {
-              case 1:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).absent = val[item].count;
-              case 2:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).late = val[item].count;
-              case 3:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).early = val[item].count;
-              case 4:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).attend = val[item].count;
-              case 5:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).official = val[item].count;
-              case 6:
-                this.viewlist.find((v) => v.studentId == val[item].studentId).suspension = val[item].count;
-            }
-          }
-          else {
-            this.viewlist.push({
-              studentId: val[item].studentId,
-              firstName: val[item].first_name,
-              lastName: val[item].last_name,
-              absent: 0,
-              late: 0,
-              early: 0,
-              attend: 0,
-              official: 0,
-              suspension: 0,
-            })
-          }
-        }
+        this.viewlist = result;
       })
       .catch((err: any) => {
         console.log(err);

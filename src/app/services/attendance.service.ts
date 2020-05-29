@@ -70,4 +70,24 @@ export class AttendanceService {
                 return Promise.reject(err.statusText);
             });
     }
+
+    // public findattendance(no: Number): Promise<string> {
+    //     const httpOptions = {
+    //         headers: new HttpHeaders({
+    //             'Content-Type': 'application/x-www-form-urlencoded',
+    //         }),
+    //         id: no,
+    //     };
+
+    //     return this.http
+    //         .post('http://localhost:3000/attendance/updateremark', httpOptions)
+    //         .toPromise()
+    //         .then((result: any) => {
+    //             // console.log(result);
+    //             return result;
+    //         })
+    //         .catch((err: any) => {
+    //             return Promise.reject(err.statusText);
+    //         });
+    // }
 }
