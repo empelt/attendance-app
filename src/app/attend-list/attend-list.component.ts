@@ -66,6 +66,7 @@ export class AttendListComponent implements OnInit {
     "31日",
   ];
   perioddata = [
+    "ホームルーム",
     "1限",
     "2限",
     "3限",
