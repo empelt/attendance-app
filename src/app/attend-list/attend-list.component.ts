@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StudentService } from '../services/student.service';
 import { AttendanceService } from '../services/attendance.service';
-
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-attend-list',
@@ -13,11 +13,15 @@ import { AttendanceService } from '../services/attendance.service';
 export class AttendListComponent implements OnInit {
   viewlist = [];
   classnum: Number;
+  now = new Date();
+  today = this.datePipe.transform(this.now, "yyyy-MM-dd");
+
 
   constructor(
     private route: ActivatedRoute,
     private studentservice: StudentService,
-    private attendanceservice: AttendanceService
+    private attendanceservice: AttendanceService,
+    public datePipe: DatePipe
   ) {}
 
   monthdata = [
@@ -80,9 +84,18 @@ export class AttendListComponent implements OnInit {
     this.studentservice
       .getstudents(this.classnum)
       .then((result: any) => {
-        console.log(result);
         this.viewlist = result;
-        console.log(this.viewlist.find((v)=>v.id==1).attendances)
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+    
+    this.studentservice
+      .checkdb(this.classnum, this.today)
+      .then((result: any) => {
+        if(result[0].attendances.findIndex((v)=>v.date.substr(0,10)==this.today) == -1) {
+          this.studentservice.creategetdata(this.classnum, this.today);
+        }
       })
       .catch((err: any) => {
         console.log(err);
@@ -95,7 +108,7 @@ export class AttendListComponent implements OnInit {
     this.viewlist.find((v)=>v.id==no).attendances[0].type = index;
 
     this.attendanceservice
-      .updatetype(index, no)
+      .updatetype(index, no, this.today)
       .catch((err: any) => {
         console.log(err);
       });
@@ -105,7 +118,7 @@ export class AttendListComponent implements OnInit {
   onSaveClick(no: Number) {
       const remark = this.viewlist.find((v)=>v.id == no).attendances.remark; 
       this.attendanceservice
-      .updateremark(no, remark)
+      .updateremark(no, remark, this.today)
       .catch((err: any) => {
         console.log(err);
       });

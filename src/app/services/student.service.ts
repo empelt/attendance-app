@@ -17,7 +17,6 @@ export class StudentService {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
         };
-
         return this.http
             .get('http://localhost:3000/student/findbyclassid/' + id, httpOptions)
             .toPromise()
@@ -35,7 +34,6 @@ export class StudentService {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
         };
-
         return this.http
             .get('http://localhost:3000/student/countattendance/' + id, httpOptions)
             .toPromise()
@@ -83,4 +81,66 @@ export class StudentService {
                 return Promise.reject(err.statusText);
             });
     }
+    public checkdb(id: Number, date: string): Promise<string> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }),
+            id: id
+        };
+        return this.http
+            .post('http://localhost:3000/student/countstudents', httpOptions)
+            .toPromise()
+            .then((result: any) => {
+                console.log(result);
+                return result;
+            })
+            .catch((err: any) => {
+                return Promise.reject(err.statusText);
+            });
+    }
+
+    // クラスの生徒を持ってきて全員に対してcreatedataを呼び出す
+    public creategetdata(id: Number, date: string): Promise<string> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }),
+        };
+        return this.http
+            .get('http://localhost:3000/student/findbyclassid/' + id, httpOptions)
+            .toPromise()
+            .then((result: any) => {
+                for (let val of result) {
+                    for (let i = 0; i < 7; i++) {
+                        this.createdata(date, val.id, i);
+                    }
+                }
+                return result;
+            })
+            .catch((err: any) => {
+                return Promise.reject(err.statusText);
+            });
+    }
+    // attendanceを作成
+    public createdata(date: string, stuId: number, period: number): Promise<string> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }),
+            date: date,
+            studentId: stuId,
+            period: period
+        };
+        return this.http
+            .post('http://localhost:3000/attendance/create', httpOptions)
+            .toPromise()
+            .then((result: any) => {
+                return result;
+            })
+            .catch((err: any) => {
+                return Promise.reject(err.statusText);
+            });
+    }
+
 }

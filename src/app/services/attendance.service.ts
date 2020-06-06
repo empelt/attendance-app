@@ -9,35 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class AttendanceService {
     constructor(private http: HttpClient) { }
-    
-    // public getstatus(id: Number): Promise<string> {
-    //     const httpOptions = {
-    //         headers: new HttpHeaders({
-    //             'Content-Type': 'application/x-www-form-urlencoded',
-    //         }),
-    //         student_id: id
-    //     };
-
-    //     return this.http
-    //         .post('http://localhost:3000/attendance/findbystudentid', httpOptions)
-    //         .toPromise()
-    //         .then((result: any) => {
-    //             // console.log(result);
-    //             return result;
-    //         })
-    //         .catch((err: any) => {
-    //             return Promise.reject(err.statusText);
-    //         });
-    // }
-    public updatetype(type: Number, id: Number): Promise<string> {
+    public updatetype(type: Number, id: Number, date: string): Promise<string> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
             id: id,
-            type: type
+            type: type,
+            date: date
         };
-
         return this.http
             .post('http://localhost:3000/attendance/updatetype', httpOptions)
             .toPromise()
@@ -50,15 +30,15 @@ export class AttendanceService {
             });
     }
 
-    public updateremark(no: Number, remark: string): Promise<string> {
+    public updateremark(no: Number, remark: string,date: string): Promise<string> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/x-www-form-urlencoded',
             }),
             id: no,
-            remark: remark
+            remark: remark,
+            date: date
         };
-
         return this.http
             .post('http://localhost:3000/attendance/updateremark', httpOptions)
             .toPromise()

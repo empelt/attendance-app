@@ -14,6 +14,7 @@ import { AttendListComponent } from './attend-list/attend-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
+import { DatePipe } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { LoginComponent } from './login/login.component';
       },
     ])
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [
     AppComponent
   ]
